@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">المشنقة</string>
+    <string name="title_activity_main">المشنقة</string>
+    <string name="package_name">com.shery.hangman</string>
+    <string name="custom_url_scheme">com.shery.hangman</string>
+</resources>
