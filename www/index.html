@@ -6,35 +6,36 @@
 <title>المشنقة</title>
 
 <style>
+@font-face{font-family:Lalezar;font-weight:400;src:url(fonts/lalezar-arabic-400-normal.woff2) format("woff2")}
 @font-face{font-family:Cairo;font-weight:500;src:url(fonts/cairo-arabic-500-normal.woff2) format("woff2")}
 @font-face{font-family:Cairo;font-weight:700;src:url(fonts/cairo-arabic-700-normal.woff2) format("woff2")}
 @font-face{font-family:'Reem Kufi';font-weight:600;src:url(fonts/reem-kufi-arabic-600-normal.woff2) format("woff2")}
 @font-face{font-family:'Reem Kufi';font-weight:700;src:url(fonts/reem-kufi-arabic-700-normal.woff2) format("woff2")}
 :root{--bg:#1d2b4f;--panel:#2a3b66;--tile:#e8f0fb;--ink:#14213d;--accent:#ff7a59;--ok:#3cc08f;--bad:#e8527a;--text:#f3f6fd;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+}
 :root:not([data-theme="light"]){color-scheme:dark}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Cairo,Tahoma,sans-serif;min-height:100%;display:flex;justify-content:center}
-main{width:100%;max-width:520px;padding:16px;display:flex;flex-direction:column;gap:14px}
-.logo{display:flex;flex-direction:column;align-items:center;transform-origin:50% 0;animation:swing 3.2s ease-in-out infinite}
-.logo i{width:3px;height:22px;background:#d9b779;border-radius:2px;position:relative}
+html,body{height:100%;overflow:hidden;overscroll-behavior:none;touch-action:manipulation}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Cairo,Tahoma,sans-serif;display:flex;justify-content:center}
+main{width:100%;max-width:520px;height:100dvh;padding:max(8px,env(safe-area-inset-top,0px)) 12px max(8px,env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:6px;overflow:hidden}
+.logo{flex:none;display:flex;flex-direction:column;align-items:center;transform-origin:50% 0;animation:swing 3.2s ease-in-out infinite}
+.logo i{width:3px;height:10px;background:#d9b779;border-radius:2px;position:relative;flex:none}
 .logo i::after{content:"";position:absolute;bottom:-5px;left:-5px;width:13px;height:13px;border:3px solid #d9b779;border-radius:50%}
-h1{font-family:'Reem Kufi',Tahoma,serif;font-size:2.8rem;margin:6px 0 0;text-align:center;background:linear-gradient(90deg,#fff08a,#ff7a59,#fff08a);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shine 4s linear infinite}
+h1{font-family:Lalezar,'Reem Kufi',Tahoma,serif;font-weight:400;font-size:2.1rem;line-height:1.1;margin:2px 0 0;text-align:center;letter-spacing:0;color:#ffb81f;background:linear-gradient(180deg,#ffe27a 0%,#ffb81f 50%,#f27d12 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;-webkit-text-stroke:0;filter:drop-shadow(2px 0 0 #3a1c07) drop-shadow(-2px 0 0 #3a1c07) drop-shadow(0 2px 0 #3a1c07) drop-shadow(0 -2px 0 #3a1c07) drop-shadow(0 4px 0 #8a4a10)}
 @keyframes swing{0%,100%{transform:rotate(4deg)}50%{transform:rotate(-4deg)}}
-@keyframes shine{to{background-position:-200% 0}}
+
 @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-12px)}40%{transform:translateX(10px)}60%{transform:translateX(-8px)}80%{transform:translateX(6px)}}
 .shake{animation:shake .45s}
 .heart{display:inline-block;width:1.3em;transition:transform .35s,opacity .35s,width .35s;letter-spacing:0}
 .heart.gone{transform:scale(0) rotate(40deg);opacity:0;width:0}
-.snd{font:inherit;font-size:1.2rem;background:none;border:0;color:var(--text);cursor:pointer}
+.snd{font:inherit;font-size:1.1rem;padding:0;background:none;border:0;color:var(--text);cursor:pointer}
 @media(prefers-reduced-motion:reduce){.logo,h1{animation:none}}
-.cats{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-.cats button{font:inherit;font-weight:700;border:2px solid var(--tile);background:transparent;color:var(--text);padding:6px 16px;border-radius:999px;cursor:pointer}
+.cats{flex:none;display:flex;gap:6px;justify-content:center;flex-wrap:nowrap}
+.cats button{font:inherit;font-weight:700;font-size:.9rem;border:2px solid var(--tile);background:transparent;color:var(--text);padding:2px 12px;border-radius:999px;cursor:pointer}
 .cats button.on{background:var(--tile);color:var(--ink)}
-.bar{display:flex;justify-content:space-between;align-items:center;background:var(--panel);border-radius:14px;padding:8px 14px;font-weight:700}
+.bar{flex:none;display:flex;justify-content:space-between;align-items:center;background:var(--panel);border-radius:12px;padding:4px 12px;font-weight:700;font-size:.95rem}
 .lives{letter-spacing:3px;font-size:1.2rem}
-svg{width:190px;height:212px;align-self:center}
+svg{flex:1 1 0;min-height:50px;width:100%;max-height:230px;align-self:center}
 svg .gal{stroke:var(--tile);stroke-width:5;stroke-linecap:round;fill:none}
 .man{transform-origin:120px 38px;animation:dangle 2.4s ease-in-out infinite}
 @keyframes dangle{0%,100%{transform:rotate(3deg)}50%{transform:rotate(-3deg)}}
@@ -51,24 +52,24 @@ svg[data-w="5"] .eyes circle:nth-child(odd){r:5.5}
 svg[data-w="6"] .man{animation-duration:.5s}
 @media(prefers-reduced-motion:reduce){.man{animation:none}}
 .part{display:none}.part.show{display:inline;transform-box:fill-box;transform-origin:50% 0;animation:pop .45s}
-.word{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:64px;align-items:flex-end;direction:rtl}
-.slot{width:38px;height:50px;border-bottom:4px solid var(--tile);font-family:'Reem Kufi',Tahoma,serif;font-size:2rem;text-align:center;line-height:50px}
-.slot.gap{border:0;width:16px}
+.word{flex:none;display:flex;flex-wrap:wrap;gap:5px;justify-content:center;align-items:flex-end;direction:rtl;min-height:46px}
+.slot{width:clamp(22px,8vw,32px);height:clamp(34px,6dvh,42px);border-bottom:3px solid var(--tile);font-family:'Reem Kufi',Tahoma,serif;font-size:clamp(1.3rem,4.4dvh,1.7rem);text-align:center;line-height:clamp(34px,6dvh,42px)}
+.slot.gap{border:0;width:12px}
 .slot.miss{color:var(--bad)}
-.kb{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
-.kb button{font:inherit;font-size:1.25rem;font-weight:700;height:46px;border:0;border-radius:10px;background:var(--tile);color:var(--ink);cursor:pointer}
+.kb{flex:none;display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.kb button{font:inherit;font-size:1.15rem;font-weight:700;height:clamp(32px,5.4dvh,44px);border:0;border-radius:9px;background:var(--tile);color:var(--ink);cursor:pointer;padding:0}
 .kb button:disabled{cursor:default;opacity:.9}
 .kb button.hit{background:var(--ok);color:#06251a}
 .kb button.miss{background:var(--bad);color:#fff;opacity:.55}
 button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.rope{font:inherit;font-weight:700;font-size:1.2rem;border:0;border-radius:14px;padding:11px;color:#3a2a00;cursor:pointer;background:linear-gradient(180deg,#fff08a 0%,#ffc933 55%,#ffa800 100%);box-shadow:0 4px 0 #b37e00,0 8px 16px rgba(255,184,0,.25)}
+.rope[hidden]{display:none}.rope{flex:none;font:inherit;font-weight:700;font-size:1.05rem;border:0;border-radius:12px;padding:6px;color:#3a2a00;cursor:pointer;background:linear-gradient(180deg,#fff08a 0%,#ffc933 55%,#ffa800 100%);box-shadow:0 3px 0 #b37e00,0 6px 12px rgba(255,184,0,.25)}
 .rope:active{transform:translateY(3px);box-shadow:0 1px 0 #b37e00}
 .rope:disabled{opacity:.5;cursor:default}
-.hint{background:var(--panel);border-radius:14px;padding:12px;text-align:center}
-.pic{font-size:4.2rem;line-height:1.2;transition:filter .5s}
-.clue{font-weight:700;margin-top:4px}
-.msg{text-align:center;min-height:2.2em;font-weight:700;font-size:1.15rem}
-.next{font:inherit;font-weight:700;font-size:1.1rem;border:0;border-radius:12px;background:var(--accent);color:#2b0f06;padding:12px;cursor:pointer}
+.hint{flex:none;display:flex;align-items:center;gap:10px;justify-content:center;background:var(--panel);border-radius:12px;padding:4px 10px;text-align:center}.hint[hidden]{display:none}
+.pic{font-size:2.3rem;line-height:1.1;transition:filter .5s}
+.clue{font-weight:700;font-size:.95rem}
+.msg{flex:none;text-align:center;min-height:1.4em;font-weight:700;font-size:1rem}
+.next{flex:none;font:inherit;font-weight:700;font-size:1rem;border:0;border-radius:12px;background:var(--accent);color:#2b0f06;padding:8px;cursor:pointer}.next[hidden]{display:none}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d2b4f}}
 </style>
 </head>
@@ -146,7 +147,7 @@ function renderCats(){$("cats").innerHTML="";Object.keys(DATA).forEach(k=>{const
 function start(){
   const list=DATA[cat].filter(x=>x[0]!==last);
   cur=list[Math.floor(Math.random()*list.length)];answer=cur[0];last=answer;hintLvl=0;
-  $("lives").innerHTML='<span class="heart">❤️</span>'.repeat(6);$("hint").hidden=true;$("hintBtn").disabled=false;$("hintBtn").textContent="فك الحبل";
+  $("lives").innerHTML='<span class="heart">❤️</span>'.repeat(6);$("hint").hidden=true;$("hintBtn").hidden=false;$("hintBtn").disabled=false;$("hintBtn").textContent="فك الحبل";
   need=new Set([...answer].filter(c=>c!==" ").map(norm));
   guessed=new Set();wrong=0;over=false;
   $("msg").textContent="خمّني الحرف الأول";$("next").hidden=true;
@@ -178,7 +179,7 @@ function hint(){
   if(hintLvl>=3)$("hintBtn").disabled=true;
   draw();
 }
-function end(){$("hintBtn").disabled=true;$("next").hidden=false;$("next").focus();draw(true)}
+function end(){$("hintBtn").disabled=true;$("hintBtn").hidden=true;$("next").hidden=false;$("next").focus();draw(true)}
 function draw(reveal){
   $("score").textContent="النقاط: "+ar(score);
   [...$("lives").children].forEach((h,i)=>h.classList.toggle("gone",i>=6-wrong));
